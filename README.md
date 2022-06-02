@@ -1,10 +1,10 @@
 # 프로젝트 이름
 
-<p align="center">
+<!-- <p align="center">
   <br>
   <img src="./images/common/logo-sample.jpeg">
   <br>
-</p>
+</p> -->
 
 목차
 
