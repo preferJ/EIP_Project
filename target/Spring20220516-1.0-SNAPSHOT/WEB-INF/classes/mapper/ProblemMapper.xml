@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Problem">
+    <insert id="save" parameterType="Problem">
+        insert into problem_table(problemYear, problemQNumber, problemQ, problemA1, problemA2, problemA3, problemA4, problemAns, problemCommentary)
+        values (#{problemYear}, #{problemQNumber}, #{problemQ}, #{problemA1}, #{problemA2}, #{problemA3}, #{problemA4}, #{problemAns}, #{problemCommentary})
+    </insert>
+
+    <select id="findAll" resultType="Problem">
+        select *
+        from problem_table
+    </select>
+
+    <select id="findById"  parameterType="Long" resultType="Problem">
+        select *
+        from problem_table
+        where problemId = #{problemId}
+    </select>
+
+</mapper>
+
+
