@@ -10,56 +10,23 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>
 
-    <style>
-        div {
-            font-size: 2rem;
-            text-align: center;
-            color: white;
-            background: black;
-            border-radius: 1rem;
-            padding: 2rem;
-            transition: all 1s ease;
-        }
+    </title>
 
-        .pressed {
-            background: tomato;
-            transform: scale(0.3);
-        }
 
-        body {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            align-content: center;
-            grid-gap: 1rem;
-            padding: 1rem;
-            height: 100vh;
-            background: skyblue;
-        }
     </style>
-
-
 </head>
 <body>
-
-<div id="1">1</div>
-<div id="2">2</div>
-<div id="3">3</div>
-
-<a href="/test">asdasdsad</a>;
-<script>
-    window.addEventListener("keydown", e => {
-        const key = document.getElementById(e.key);
-        if (key) key.classList.add('pressed');
-    });
+<jsp:include page="layout/header.jsp" flush="false"></jsp:include>
+<br><br><br>
+<h1>메인</h1>
+<a href="/problem/makeForm"> 문제 만들기 </a>
+<a href="/problem/list" methods="get"> 문제리스트 보기 (페이징 ㄴㄴ) </a>
 
 
-    window.addEventListener("keyup", e => {
-        const key = document.getElementById(e.key);
-        if (key) key.classList.remove('pressed');
-    });
 
-</script>
+
+
 </body>
 </html>

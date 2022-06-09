@@ -3,8 +3,14 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-<!--        <typeAlias type="com.its.board.dto.BoardDTO" alias="board"></typeAlias>-->
-<!--        <typeAlias type="com.its.board.dto.CommentDTO" alias="comment"></typeAlias>-->
-<!--        <typeAlias type="com.its.board.dto.MemberDTO" alias="member"></typeAlias>-->
+<!--        <typeAlias type="com.its.board.dto.AnswerDTO" alias="Answer"></typeAlias>-->
+<!--        <typeAlias type="com.its.board.dto.BoardDTO" alias="Board"></typeAlias>-->
+<!--        <typeAlias type="com.its.board.dto.CommentDTO" alias="Comment"></typeAlias>-->
+<!--        <typeAlias type="com.its.board.dto.DeclarationDTO" alias="Declaration"></typeAlias>-->
+<!--        <typeAlias type="com.its.board.dto.FileDTO" alias="File"></typeAlias>-->
+<!--        <typeAlias type="com.its.board.dto.MemberDTO" alias="Member"></typeAlias>-->
+        <typeAlias type="com.its.board.dto.ProblemDTO" alias="Problem"></typeAlias>
     </typeAliases>
 </configuration>
+
+
