@@ -20,6 +20,10 @@
         where problemId = #{problemId}
     </select>
 
+    <select id="searchList" parameterType="hashMap" resultType="Problem">
+
+    </select>
+
 </mapper>
 
 

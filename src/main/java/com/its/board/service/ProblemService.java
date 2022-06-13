@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ProblemService {
@@ -23,5 +24,9 @@ public class ProblemService {
 
     public ProblemDTO findById(Long problemId) {
         return problemRepository.findById(problemId);
+    }
+
+    public List<ProblemDTO> searchList(Map<String, String> searchCondition) {
+        return problemRepository.searchList(searchCondition);
     }
 }

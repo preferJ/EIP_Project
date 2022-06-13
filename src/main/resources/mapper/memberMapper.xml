@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Member">
+    <insert id="save" parameterType="Member">
+        insert into member_table(memberName, memberPassword)
+        values (#{memberName}, #{memberPassword})
+    </insert>
+
+    <select id="findByNameForName" parameterType="String" resultType="Member">
+        select *
+        from member_table
+        where memberName = #{memberName};
+    </select>
+
+    <select id="findById" parameterType="String" resultType="Member">
+        select *
+        from member_table
+        where memberId = #{memberId};
+    </select>
+
+    <select id="login" parameterType="hashMap" resultType="Member">
+        select *
+        from member_table
+        where memberId = #{memberId} and memberPassword = #{memberPassword}
+    </select>
+
+
+</mapper>
+
+

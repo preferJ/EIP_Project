@@ -8,7 +8,7 @@
 <!--        <typeAlias type="com.its.board.dto.CommentDTO" alias="Comment"></typeAlias>-->
 <!--        <typeAlias type="com.its.board.dto.DeclarationDTO" alias="Declaration"></typeAlias>-->
 <!--        <typeAlias type="com.its.board.dto.FileDTO" alias="File"></typeAlias>-->
-<!--        <typeAlias type="com.its.board.dto.MemberDTO" alias="Member"></typeAlias>-->
+        <typeAlias type="com.its.board.dto.MemberDTO" alias="Member"></typeAlias>
         <typeAlias type="com.its.board.dto.ProblemDTO" alias="Problem"></typeAlias>
     </typeAliases>
 </configuration>

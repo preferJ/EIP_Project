@@ -11,16 +11,12 @@
 
 <html>
 <head>
+    <title></title>
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/navbars/">
 
 <style>
-    body{
-        background-image:url("/resources/img/seo-2394237.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
 
-    }
 </style>
 </head>
 <body>
@@ -46,7 +42,7 @@
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="/board/paging">문제풀기</a>
+                    <a class="nav-link active" href="/problem/startPage">문제풀기</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="/board/paging">게시판</a>
@@ -54,15 +50,7 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="/board/save" >글작성</a>
                 </li>
-<%--                <li class="nav-item dropdown">--%>
-<%--                    <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown"--%>
-<%--                       aria-expanded="false">Dropdown</a>--%>
-<%--                    <ul class="dropdown-menu" aria-labelledby="dropdown03">--%>
-<%--                        <li><a class="dropdown-item" href="#">Action</a></li>--%>
-<%--                        <li><a class="dropdown-item" href="#">Another action</a></li>--%>
-<%--                        <li><a class="dropdown-item" href="#">Something else here</a></li>--%>
-<%--                    </ul>--%>
-<%--                </li>--%>
+
             </ul>
             <form role="search">
                 <input class="form-control" type="search" placeholder="Search" aria-label="Search">
@@ -72,7 +60,7 @@
                 <c:choose>
                     <c:when test="${sessionScope.memberId == null}">
                         <li class="nav-item">
-                            <a class="nav-link active" href="/member/login">LogIn</a>
+                            <a class="nav-link active" href="/member/loginForm">LogIn</a>
                         </li>
                     </c:when>
                     <c:otherwise>

@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/problem")
 @Controller
@@ -49,7 +52,7 @@ public class ProblemController {
             if (nn[i].equals("?")) {
 
                 n2 = i;
-                for (int j = n1 ; j < n2 + 1; j++) {
+                for (int j = n1; j < n2 + 1; j++) {
                     temp.append(nn[j]);
                 }
                 problem.add(temp.toString());
@@ -101,7 +104,7 @@ public class ProblemController {
                 }
                 des.add(temp.toString());
                 temp = new StringBuilder();
-                n1 = i+1;
+                n1 = i + 1;
             }
 
         }
@@ -115,7 +118,7 @@ public class ProblemController {
             newProblemDTO.setProblemA3(ans3.get(i));
             newProblemDTO.setProblemA4(ans4.get(i));
             newProblemDTO.setProblemCommentary(des.get(i));
-            newProblemDTO.setProblemQNumber(i+1);
+            newProblemDTO.setProblemQNumber(i + 1);
             newProblemDTO.setProblemYear(dateQ);
             System.out.println(newProblemDTO);
             problemService.save(newProblemDTO);
@@ -127,16 +130,43 @@ public class ProblemController {
 
 
     @GetMapping("/list")
-    public String AllList(Model model){
+    public String AllList(Model model) {
         List<ProblemDTO> problemList = problemService.findAll();
-        model.addAttribute("problemList",problemList);
+        model.addAttribute("problemList", problemList);
         return "problemP/list";
     }
 
     @GetMapping("/detail")
     public String findById(@RequestParam("problemId") Long problemId, Model model) {
         System.out.println(problemService.findById(problemId));
-        model.addAttribute("ProblemDTO",problemService.findById(problemId));
+        model.addAttribute("ProblemDTO", problemService.findById(problemId));
         return "problemP/detail";
     }
+
+    @GetMapping("/startPage")
+    public String startPage() {
+        return "problemP/startPage";
+    }
+
+    @PostMapping("/selectAndStart")
+    public String selectAndStart(
+            @RequestParam(value = "problemYear", required = false, defaultValue = "No") String problemYear,
+            @RequestParam(value = "problemSubject", required = false, defaultValue = "No") String problemSubject,Model model
+//            @RequestParam(value = "xProblem", required = false, defaultValue = "No") String xProblem,
+//            @RequestParam(value = "randomProblem", required = false, defaultValue = "No") String randomProblem, Model model
+            ) {
+        Map<String, String> searchCondition = new HashMap<>();
+        if (problemSubject != "No"){
+            searchCondition.put("problemSubject","problemSubject");
+        }
+        if (problemYear != "No"){
+            searchCondition.put("problemYear","problemYear");
+        }
+        List<ProblemDTO> problemDTOList = problemService.searchList(searchCondition);
+        model.addAttribute("problemDTOList",problemDTOList);
+
+        return "problemP/solve";
+    }
+
+
 }
