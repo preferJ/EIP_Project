@@ -19,7 +19,7 @@ public class ProblemDTO {
     private String problemA2;
     private String problemA3;
     private String problemA4;
-    private String problemAns;
+    private int problemAns;
     private String problemCommentary;
     private int problemRecommed;
 }

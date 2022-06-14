@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.BufferedReader;
+import java.util.*;
 
 @RequestMapping("/problem")
 @Controller
@@ -33,97 +31,26 @@ public class ProblemController {
 
     @PostMapping("/save")
     public String makeForm(@RequestParam("makeQ") String makeQ,
-                           @RequestParam("dateQ") String dateQ) {
-        String[] nn = makeQ.split("");
+                           @RequestParam("dateQ") String dateQ,
+                           @RequestParam("makeA") String makeA
+    ) {
+        String temp = "";
+        String temp2 = "";
+        String[] problemText = makeQ.split("\\n");
+        ProblemDTO[] problemDTOS = new ProblemDTO[99];
 
-//문제 컷
-        int n1 = 0;
-        int n2;
-        List<String> problem = new ArrayList<>();
-        List<String> ans1 = new ArrayList<>();
-        List<String> ans2 = new ArrayList<>();
-        List<String> ans3 = new ArrayList<>();
-        List<String> ans4 = new ArrayList<>();
-        List<String> des = new ArrayList<>();
 
-        StringBuilder temp = new StringBuilder();
+        for (int i = 0; i < problemText.length; i++) {
+            temp = problemText[i];
 
-        for (int i = 0; i < nn.length; i++) {
-            if (nn[i].equals("?")) {
+            temp2 = temp.replace("   ", "");
 
-                n2 = i;
-                for (int j = n1; j < n2 + 1; j++) {
-                    temp.append(nn[j]);
-                }
-                problem.add(temp.toString());
-                temp = new StringBuilder();
-                n1 = i;
-            }
+            problemText[i] = temp2;
 
-            if (nn[i].equals("②")) {
-                n2 = i;
-                for (int j = n1 + 1; j < n2; j++) {
-                    temp.append(nn[j]);
-                }
-                ans1.add(temp.toString());
-                temp = new StringBuilder();
-                n1 = i;
-            }
-            if (nn[i].equals("③")) {
-                n2 = i;
-                for (int j = n1; j < n2; j++) {
-                    temp.append(nn[j]);
-                }
-                ans2.add(temp.toString());
-                temp = new StringBuilder();
-                n1 = i;
-            }
-            if (nn[i].equals("④")) {
-                n2 = i;
-                for (int j = n1; j < n2; j++) {
-                    temp.append(nn[j]);
-                }
-                ans3.add(temp.toString());
-                temp = new StringBuilder();
-                n1 = i;
-            }
-            if (nn[i].equals("<")) {
-                n2 = i;
-                for (int j = n1; j < n2; j++) {
-                    temp.append(nn[j]);
-                }
-                ans4.add(temp.toString());
-                temp = new StringBuilder();
-                n1 = i;
-            }
+            System.out.println(problemText[i]);
 
-            if (nn[i].equals("]")) {
-                n2 = i;
-                for (int j = n1; j < n2 + 1; j++) {
-                    temp.append(nn[j]);
-                }
-                des.add(temp.toString());
-                temp = new StringBuilder();
-                n1 = i + 1;
-            }
 
         }
-
-
-        for (int i = 0; i < problem.size(); i++) {
-            ProblemDTO newProblemDTO = new ProblemDTO();
-            newProblemDTO.setProblemQ(problem.get(i));
-            newProblemDTO.setProblemA1(ans1.get(i));
-            newProblemDTO.setProblemA2(ans2.get(i));
-            newProblemDTO.setProblemA3(ans3.get(i));
-            newProblemDTO.setProblemA4(ans4.get(i));
-            newProblemDTO.setProblemCommentary(des.get(i));
-            newProblemDTO.setProblemQNumber(i + 1);
-            newProblemDTO.setProblemYear(dateQ);
-            System.out.println(newProblemDTO);
-            problemService.save(newProblemDTO);
-        }
-
 
         return "index";
     }
@@ -151,19 +78,19 @@ public class ProblemController {
     @PostMapping("/selectAndStart")
     public String selectAndStart(
             @RequestParam(value = "problemYear", required = false, defaultValue = "No") String problemYear,
-            @RequestParam(value = "problemSubject", required = false, defaultValue = "No") String problemSubject,Model model
+            @RequestParam(value = "problemSubject", required = false, defaultValue = "No") String problemSubject, Model model
 //            @RequestParam(value = "xProblem", required = false, defaultValue = "No") String xProblem,
 //            @RequestParam(value = "randomProblem", required = false, defaultValue = "No") String randomProblem, Model model
-            ) {
+    ) {
         Map<String, String> searchCondition = new HashMap<>();
-        if (problemSubject != "No"){
-            searchCondition.put("problemSubject","problemSubject");
+        if (problemSubject != "No") {
+            searchCondition.put("problemSubject", "problemSubject");
         }
-        if (problemYear != "No"){
-            searchCondition.put("problemYear","problemYear");
+        if (problemYear != "No") {
+            searchCondition.put("problemYear", "problemYear");
         }
         List<ProblemDTO> problemDTOList = problemService.searchList(searchCondition);
-        model.addAttribute("problemDTOList",problemDTOList);
+        model.addAttribute("problemDTOList", problemDTOList);
 
         return "problemP/solve";
     }

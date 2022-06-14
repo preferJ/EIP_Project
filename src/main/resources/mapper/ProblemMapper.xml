@@ -5,8 +5,8 @@
 
 <mapper namespace="Problem">
     <insert id="save" parameterType="Problem">
-        insert into problem_table(problemYear, problemQNumber, problemQ, problemA1, problemA2, problemA3, problemA4, problemAns, problemCommentary)
-        values (#{problemYear}, #{problemQNumber}, #{problemQ}, #{problemA1}, #{problemA2}, #{problemA3}, #{problemA4}, #{problemAns}, #{problemCommentary})
+        insert into problem_table(problemSubject,problemYear, problemQNumber, problemQ, problemA1, problemA2, problemA3, problemA4, problemAns, problemCommentary)
+        values (#{problemSubject},#{problemYear}, #{problemQNumber}, #{problemQ}, #{problemA1}, #{problemA2}, #{problemA3}, #{problemA4}, #{problemAns}, #{problemCommentary})
     </insert>
 
     <select id="findAll" resultType="Problem">

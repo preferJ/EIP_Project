@@ -28,9 +28,8 @@
 <h1>메인</h1>
 <a href="/problem/makeForm"> 문제 만들기 </a>
 <a href="/problem/list" methods="get"> 문제리스트 보기 (페이징 ㄴㄴ) </a>
-<a href="/member/saveForm" methods="get">회원가입</a>
-
-
+<a href="/member/saveForm" methods="get">회원가입</a><br>
+<a href="/sstest" methods="get">테스트</a>
 
 
 
