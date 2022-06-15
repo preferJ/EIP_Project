@@ -28,7 +28,10 @@
 
         <form action="/problem/save" method="post">
             <input class="form-control mb-2" type="text" name="dateQ" placeholder="시험년월 을 입력하세요 ex)202203">
+            문제복붙
             <textarea class="form-control mb-2" name="makeQ" rows="5" cols="10"></textarea>
+            정답복붙
+            <textarea class="form-control mb-2" name="makeA" rows="5" cols="10"></textarea>
             <input class="btn btn-primary" type="submit" value="문제 저장">
         </form>
 

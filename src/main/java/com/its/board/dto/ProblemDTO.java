@@ -22,4 +22,17 @@ public class ProblemDTO {
     private int problemAns;
     private String problemCommentary;
     private int problemRecommed;
+
+    public ProblemDTO(String problemSubject, int problemQNumber, String problemQ, String problemA1, String problemA2, String problemA3, String problemA4, String problemCommentary) { // 생성자 오버로딩
+        this.problemSubject = problemSubject;
+        this.problemQNumber = problemQNumber;
+        this.problemQ = problemQ;
+        this.problemA1 = problemA1;
+        this.problemA2 = problemA2;
+        this.problemA3 = problemA3;
+        this.problemA4 = problemA4;
+        this.problemCommentary = problemCommentary;
+    }
+
+
 }
