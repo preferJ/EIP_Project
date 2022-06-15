@@ -14,6 +14,8 @@ public class ProblemRepository {
 @Autowired
 private SqlSessionTemplate sql;
     public void save(ProblemDTO newProblemDTO) {
+        System.out.println("저장소에서 찍은 세이브입니다 DTO정보는"+newProblemDTO);
+
         sql.insert("Problem.save",newProblemDTO);
     }
 

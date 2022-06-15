@@ -14,7 +14,7 @@ public class ProblemService {
     private ProblemRepository problemRepository;
 
     public void save(ProblemDTO newProblemDTO) {
-
+        System.out.println("서비스에서 찍은 세이브입니다 DTO정보는"+newProblemDTO);
     problemRepository.save(newProblemDTO);
     }
 //
